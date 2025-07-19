@@ -10,19 +10,19 @@ public class GUI {
 
     public void mainFrame() {
         JFrame frame = new JFrame();
-        JPanel mainPanel = new JPanel(new GridBagLayout()); // Use GridBagLayout for the main panel
+        JPanel mainPanel = new JPanel(new GridBagLayout()); 
         GridBagConstraints gbc = new GridBagConstraints();
 
         JLabel heading = new JLabel("Sudoku");
-        heading.setFont(new Font("Arial", Font.BOLD, 26)); // Set font and size for the heading
-        heading.setHorizontalAlignment(SwingConstants.CENTER); // Center the text horizontally
+        heading.setFont(new Font("Arial", Font.BOLD, 26)); 
+        heading.setHorizontalAlignment(SwingConstants.CENTER);
 
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.gridwidth = 2; // Span two columns
-        gbc.insets = new Insets(10, 10, 10, 10); // Add padding around the heading
+        gbc.gridwidth = 2; 
+        gbc.insets = new Insets(10, 10, 10, 10); 
         gbc.anchor = GridBagConstraints.CENTER;
-        mainPanel.add(heading, gbc); // Add heading to the mainPanel
+        mainPanel.add(heading, gbc); 
 
         JPanel gridPanel = new JPanel();
         gridPanel.setLayout(new GridLayout(ROW, COLUMN, 0, 0));
@@ -31,11 +31,11 @@ public class GUI {
         for (int i = 0; i < ROW; i++) {
             for (int j = 0; j < COLUMN; j++) {
                 numbers[i][j] = new JTextField();
-                numbers[i][j].setPreferredSize(new Dimension(50, 50)); // Adjust size as needed
-                numbers[i][j].setHorizontalAlignment(JTextField.CENTER); // Center the text
-                numbers[i][j].setFont(new Font("Arial", Font.PLAIN, 26)); // Set font and size
+                numbers[i][j].setPreferredSize(new Dimension(50, 50)); 
+                numbers[i][j].setHorizontalAlignment(JTextField.CENTER); 
+                numbers[i][j].setFont(new Font("Arial", Font.PLAIN, 26)); 
 
-                // Set borders for 3x3 subgrids
+            
                 int top = (i % 3 == 0) ? 2 : 1;
                 int left = (j % 3 == 0) ? 2 : 1;
                 int bottom = (i == ROW - 1 || (i + 1) % 3 == 0) ? 2 : 1;
@@ -51,23 +51,23 @@ public class GUI {
         //CREATES A RANDOM SUDOKU BOARD!
         GameLogic gl = new GameLogic();
         gl.createGame();
-        gridPanel.setPreferredSize(new Dimension(500, 500)); // Set preferred size of the gridPanel
+        gridPanel.setPreferredSize(new Dimension(500, 500));
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.gridwidth = 1; // Reset gridwidth
+        gbc.gridwidth = 1;
         gbc.anchor = GridBagConstraints.CENTER;
-        mainPanel.add(gridPanel, gbc); // Add gridPanel to the mainPanel
+        mainPanel.add(gridPanel, gbc); 
 
-        JPanel buttonPanel = new JPanel(); // Create a panel for the buttons
+        JPanel buttonPanel = new JPanel(); 
         buttonPanel.setLayout(new GridBagLayout());
         GridBagConstraints buttonGbc = new GridBagConstraints();
 
-        JButton submitButton = new JButton("Submit"); // Create a new button
-        submitButton.setPreferredSize(new Dimension(120, 40)); // Set preferred size for the button
+        JButton submitButton = new JButton("Submit"); 
+        submitButton.setPreferredSize(new Dimension(120, 40)); 
         buttonGbc.gridx = 0;
         buttonGbc.gridy = 0;
-        buttonPanel.add(submitButton, buttonGbc); // Add the submit button to the buttonPanel
+        buttonPanel.add(submitButton, buttonGbc); 
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -83,11 +83,11 @@ public class GUI {
             }
         });
 
-        JButton fillButton = new JButton("Fill"); // Create another button
-        fillButton.setPreferredSize(new Dimension(120, 40)); // Set preferred size for the button
+        JButton fillButton = new JButton("Fill"); 
+        fillButton.setPreferredSize(new Dimension(120, 40));
         buttonGbc.gridx = 1;
-        buttonGbc.insets = new Insets(0, 50, 0, 0); // Add gap between the buttons
-        buttonPanel.add(fillButton, buttonGbc); // Add the reset button to the buttonPanel
+        buttonGbc.insets = new Insets(0, 50, 0, 0);
+        buttonPanel.add(fillButton, buttonGbc);
         fillButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,11 +98,11 @@ public class GUI {
         });
 
 
-        gbc.gridy = 2; // Position the buttonPanel below the gridPanel
-        mainPanel.add(buttonPanel, gbc); // Add the buttonPanel to the mainPanel
+        gbc.gridy = 2; 
+        mainPanel.add(buttonPanel, gbc);
 
         frame.add(mainPanel);
-        frame.pack();  // Adjusts frame size to fit preferred sizes of components
+        frame.pack(); 
         frame.setSize(700, 700);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
